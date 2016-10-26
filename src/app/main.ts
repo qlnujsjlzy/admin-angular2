@@ -18,15 +18,20 @@ import { AppModule } from './app.module';
     ]
 })
 class MainModule {
-    constructor(public appRef: ApplicationRef, public appStore: AppStore) {}
+    constructor(public appRef: ApplicationRef, public appStore: AppStore) {
+    }
 
     hmrOnInit(store: any) {
-        if (!store || !store.state) { return; }
+        if (!store || !store.state) {
+            return;
+        }
         console.log('HMR store', JSON.stringify(store, null, 2));
         // restore state
         this.appStore.setState(store.state);
         // restore input values
-        if ('restoreInputValues' in store) { store.restoreInputValues(); }
+        if ('restoreInputValues' in store) {
+            store.restoreInputValues();
+        }
         this.appRef.tick();
         Object.keys(store).forEach(prop => delete store[prop]);
     }
@@ -38,7 +43,7 @@ class MainModule {
         // recreate elements
         store.disposeOldHosts = createNewHosts(cmpLocation);
         // save input values
-        store.restoreInputValues  = createInputTransfer();
+        store.restoreInputValues = createInputTransfer();
         // remove styles
         removeNgStyles();
     }

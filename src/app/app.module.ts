@@ -1,26 +1,29 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { CoreModule } from './core/core.module';
-import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeModule } from './home/home.module';
+import { PortalModule } from './portal/_portal.module';
 import { AppComponent } from './app.component';
-import {AdminModule} from "./admin.module";
+import { SharedModule } from './shared/shared.module';
+import { AdminModule } from './admin/_admin.module';
+import { LOGIN_COMPONENT } from './login/index';
+import { SIGNUP_COMPONENTS } from './signup/index';
 
 @NgModule({
-    declarations: [
-        AppComponent
-    ],
     imports: [
         BrowserModule,
-        CoreModule,
-        SharedModule,
-        HomeModule,
-        AppRoutingModule,
-        AdminModule
+        PortalModule,
+        AdminModule,
+        SharedModule.forRoot(),
+        AppRoutingModule
     ],
-    bootstrap: [ AppComponent ]
+    declarations: [
+        AppComponent,
+        ...LOGIN_COMPONENT,
+        ...SIGNUP_COMPONENTS
+
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

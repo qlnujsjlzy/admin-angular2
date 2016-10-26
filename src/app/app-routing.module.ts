@@ -1,20 +1,20 @@
-import {RouterModule, Routes} from '@angular/router';
-import {NgModule} from '@angular/core';
-import {AppComponent} from "./app.component";
-import {Dashbard1Component} from "./home/context/dashbard-1.component";
+import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
-    {path: '', pathMatch: 'full', redirectTo: 'admin/dashbard1'},
-    {path: 'index', component: AppComponent},
+    {path: '', pathMatch: 'full', redirectTo: '/portal'},
     {
-        path: 'admin',
-        children: [
-            {path: '',  redirectTo:'admin/dashbard1'},
-            {path: 'dashbard1', component: Dashbard1Component}
-        ]
+        path: 'login',
+        component: LoginComponent
+    },
+    {
+        path: 'signup',
+        component: SignupComponent
     }
-
 ];
+
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
@@ -22,33 +22,3 @@ const routes: Routes = [
 
 export class AppRoutingModule {
 }
-
-
-/*
-
-
- import { NgModule } from '@angular/core';
- import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
- import {AdminComponent} from "./admin.component";
-
- const appRoutes: Routes = [
- {
- path: '/admin',
- component: AdminComponent
- }
- ];
- @NgModule({
- imports: [
- RouterModule.forRoot(appRoutes, {
- preloadingStrategy: PreloadAllModules
- })
- ],
- exports: [
- RouterModule
- ],
- providers: []
- })
- export class AppRoutingModule {
-
- }
- */
