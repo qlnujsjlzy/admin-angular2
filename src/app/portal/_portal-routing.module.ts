@@ -5,6 +5,10 @@ import { PortalComponent } from './portal.component';
 
 const routes: Routes = [
     {
+        path: 'index',
+        component: PortalComponent
+    },
+    {
         path: 'portal',
         component: PortalComponent
     },

@@ -4,7 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
-    {path: '', pathMatch: 'full', redirectTo: '/portal'},
+    {path: '', pathMatch: 'full', redirectTo: '/index'},
     {
         path: 'login',
         component: LoginComponent
